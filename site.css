@@ -1,0 +1,364 @@
+/* Elevra Help Center: the public theme documentation built by scripts/docs-site.js. */
+:root {
+  --bg: #fffaf7;
+  --surface: #f5e6e1;
+  --fg: #2b1a1e;
+  --muted: #6e5a5e;
+  --accent: #7a2e3f;
+  --border: #e6d5d0;
+  --code: #f2e7e3;
+  --radius: 14px;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1214;
+    --surface: #2a1d21;
+    --fg: #f6ecea;
+    --muted: #c4b1b4;
+    --accent: #f0a8b8;
+    --border: #3d2c31;
+    --code: #2f2226;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-block-start: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1.0625rem/1.65 var(--sans);
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip {
+  position: absolute;
+  inset-inline-start: 1rem;
+  inset-block-start: -4rem;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.skip:focus {
+  inset-block-start: 1rem;
+}
+
+/* Masthead */
+.masthead {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 5;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+  border-block-end: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.brand__name {
+  font: 400 1.9rem/1 var(--serif);
+}
+
+.brand__sub {
+  margin-inline-start: 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.masthead__support,
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding: 0 1.2rem;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.masthead__support:hover,
+.button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  gap: 2rem;
+  max-inline-size: 78rem;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 4rem;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: 3.5rem;
+    padding-block-start: 3rem;
+  }
+}
+
+.sidebar__menu summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-block-size: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sidebar__menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.sidebar__menu summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.sidebar__menu[open] summary::after {
+  content: '–';
+}
+
+.sidebar ul {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar li a {
+  display: block;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.sidebar li a:hover {
+  background: var(--surface);
+}
+
+.sidebar li a[aria-current='page'] {
+  background: var(--surface);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (min-width: 960px) {
+  .sidebar {
+    position: sticky;
+    inset-block-start: 6rem;
+    align-self: start;
+  }
+
+  .sidebar__menu summary {
+    display: none;
+  }
+}
+
+/* Contents and article */
+main {
+  min-inline-size: 0;
+}
+
+.contents {
+  margin-block: 1.5rem 2.5rem;
+  padding: 1.1rem 1.4rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.95rem;
+}
+
+.contents p {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contents ul {
+  columns: 2 14rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contents li {
+  padding-block: 0.15rem;
+}
+
+.prose {
+  max-inline-size: 46rem;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.prose h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+}
+
+.prose h2 {
+  margin: 3rem 0 0.75rem;
+  font-size: 2.1rem;
+}
+
+.prose h3 {
+  margin: 2rem 0 0.5rem;
+  font-size: 1.55rem;
+}
+
+.prose p,
+.prose li {
+  overflow-wrap: anywhere;
+}
+
+.prose li + li {
+  margin-block-start: 0.35rem;
+}
+
+.prose code {
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  background: var(--code);
+  font-size: 0.9em;
+}
+
+.prose img {
+  max-inline-size: 100%;
+  block-size: auto;
+  border-radius: var(--radius);
+}
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.2rem 1.2rem;
+  border-inline-start: 3px solid var(--accent);
+  color: var(--muted);
+}
+
+.table {
+  max-inline-size: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.prose table {
+  inline-size: 100%;
+  min-inline-size: 36rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+  padding: 0.7rem 0.9rem;
+  border-block-end: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.prose tr:last-child td {
+  border-block-end: 0;
+}
+
+/* Support card and footer */
+.support-card {
+  max-inline-size: 46rem;
+  margin-block-start: 4rem;
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.support-card h2 {
+  margin: 0 0 0.5rem;
+  font: 400 2rem/1.1 var(--serif);
+}
+
+.support-card p {
+  margin: 0 0 1.2rem;
+  color: var(--muted);
+}
+
+.colophon {
+  padding: 2rem clamp(1rem, 4vw, 2.5rem);
+  border-block-start: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

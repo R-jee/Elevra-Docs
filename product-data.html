@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product details with metafields – Elevra Help Center</title>
+<meta name="description" content="Guides for store owners using the Elevra Shopify theme: setup, styles, sections, the footer, product data and answers to common questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Instrument+Serif&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <a class="brand" href="index.html"><span class="brand__name">Elevra</span> <span class="brand__sub">Help Center</span></a>
+  <a class="masthead__support" href="#support">Contact support</a>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Guides"><details class="sidebar__menu"><summary>Guides</summary><ul><li><a href="index.html">Home</a></li><li><a href="getting-started.html">Getting started</a></li><li><a href="styles.html">Theme styles</a></li><li><a href="sections.html">Sections</a></li><li><a href="footer.html">Designing your footer</a></li><li><a href="product-data.html" aria-current="page">Product details</a></li><li><a href="faq.html">FAQ</a></li></ul></details></nav>
+  <main id="main" tabindex="-1">
+    <article class="prose"><h1 id="product-details-with-metafields">Product details with metafields</h1><nav class="contents" aria-labelledby="contents-title"><p id="contents-title">On this page</p><ul><li><a href="#product-badge">Product badge</a></li><li><a href="#shade-guides-care-instructions-and-other-info-panels">Shade guides, care instructions and other info panels</a></li><li><a href="#complementary-products-pairs-well-with">Complementary products (&quot;Pairs well with&quot;)</a></li><li><a href="#collection-banner">Collection banner</a></li><li><a href="#store-locations">Store locations</a></li><li><a href="#comparison-specs">Comparison specs</a></li><li><a href="#troubleshooting">Troubleshooting</a></li></ul></nav>
+<p>Elevra can show extra product information that Shopify doesn&#39;t have a field for: a badge, a shade guide, a care panel, products that go well together, a wide collection banner, your store locations and comparison specs. You add this information once in your Shopify admin with <strong>metafields</strong> (extra fields on a product or collection) and <strong>metaobjects</strong> (reusable entries, such as one size guide shared by many products). The theme then shows it automatically.</p>
+<p>You only need the parts you&#39;ll use. Each one below is independent.</p>
+<blockquote>
+<p>Where things are in the admin: metafield and metaobject definitions live in <strong>Settings → Custom data</strong>. Metaobject entries live in <strong>Content → Metaobjects</strong>.</p>
+</blockquote>
+<h2 id="product-badge">Product badge</h2>
+<p>A short label on the product card, such as &quot;Bestseller&quot; or &quot;Limited edition&quot;.</p>
+<ol>
+<li>Go to <strong>Settings → Custom data → Products → Add definition</strong>.</li>
+<li>Name: <code>Badge</code>. Namespace and key: <code>custom.badge</code>. Type: <strong>Single line text</strong>. Save.</li>
+<li>Open a product, scroll to <strong>Metafields</strong>, and type the badge text in <strong>Badge</strong>. Save.</li>
+</ol>
+<p>The badge appears on product cards everywhere (collections, search, home page sections). Its color is set in <strong>Theme settings → Product cards → Custom badge color</strong>.</p>
+<h2 id="shade-guides-care-instructions-and-other-info-panels">Shade guides, care instructions and other info panels</h2>
+<p>A link on the product page (for example &quot;Shade guide and care&quot;) that opens a panel with a title and text. One panel can be shared by many products, so you write your size guide once.</p>
+<p><strong>Create the panel type (once):</strong></p>
+<ol>
+<li>Go to <strong>Settings → Custom data → Metaobject definitions → Add definition</strong>.</li>
+<li>Name: <code>Info panel</code>. Type (shown under the name): <code>info_panel</code>.</li>
+<li>Add two fields: <strong>Title</strong> (key <code>title</code>, single line text) and <strong>Content</strong> (key <code>content</code>, rich text). Optionally add <strong>Image</strong> (key <code>image</code>, file, images only).</li>
+<li>Turn on <strong>Storefronts</strong> access. Save.</li>
+</ol>
+<p><strong>Write your panels:</strong></p>
+<ol>
+<li>Go to <strong>Content → Metaobjects → Info panel → Add entry</strong>.</li>
+<li>Fill in the title (for example &quot;Finding your shade&quot;) and the content. Save. Repeat for each panel (for example &quot;Ingredients and care&quot;).</li>
+</ol>
+<p><strong>Connect panels to products:</strong></p>
+<ol>
+<li>Go to <strong>Settings → Custom data → Products → Add definition</strong>.</li>
+<li>Name: <code>Info panel</code>. Namespace and key: <code>custom.size_guide</code>. Type: <strong>Metaobject</strong>, and choose <strong>Info panel</strong>. Save.</li>
+<li>Open a product, find <strong>Info panel</strong> under <strong>Metafields</strong>, and pick the panel. Save.</li>
+</ol>
+<p><strong>Show it on the product page:</strong></p>
+<ol>
+<li>In the theme editor, open a product page and click the <strong>Product information</strong> section.</li>
+<li>Add an <strong>Info drawer</strong> block. Set <strong>Link text</strong> (what customers click) and <strong>Product metafield</strong> to <code>custom.size_guide</code>.</li>
+<li>Optional: pick a <strong>Fallback page</strong> to show for products without a panel. Save.</li>
+</ol>
+<p>Products without a panel and without a fallback page simply don&#39;t show the link. You can add several Info drawer blocks for different metafields (for example a size guide and a care panel).</p>
+<h2 id="complementary-products-pairs-well-with">Complementary products (&quot;Pairs well with&quot;)</h2>
+<p>Products that go well with the one being viewed, shown on the product page and in the cart.</p>
+<p><strong>Option A, automatic:</strong> install Shopify&#39;s free <strong>Search &amp; Discovery</strong> app, open a product there and choose its complementary products.</p>
+<p><strong>Option B, hand-picked in the product:</strong></p>
+<ol>
+<li>Go to <strong>Settings → Custom data → Products → Add definition</strong>.</li>
+<li>Name: <code>Complementary products</code>. Namespace and key: <code>custom.complementary</code>. Type: <strong>Product</strong>, and choose <strong>List of products</strong>. Save.</li>
+<li>Open a product and pick its complementary products under <strong>Metafields</strong>. Save.</li>
+</ol>
+<p>Hand-picked products take priority over the app&#39;s. To show them, add a <strong>Complementary products</strong> block to the <strong>Product information</strong> section. In the cart, turn on <strong>Theme settings → Cart → Products to suggest</strong>.</p>
+<h2 id="collection-banner">Collection banner</h2>
+<p>A wide image at the top of a collection page. Without it, the collection&#39;s own image is used.</p>
+<ol>
+<li>Go to <strong>Settings → Custom data → Collections → Add definition</strong>.</li>
+<li>Name: <code>Banner image</code>. Namespace and key: <code>custom.banner</code>. Type: <strong>File</strong>, images only. Save.</li>
+<li>Open a collection and upload a wide image (at least 2400 × 800 pixels) under <strong>Banner image</strong>. Save.</li>
+<li>In the theme editor, open the collection page and turn on <strong>Show collection image</strong> in <strong>Collection products</strong>.</li>
+</ol>
+<h2 id="store-locations">Store locations</h2>
+<p>Your shops on a &quot;Find a store&quot; page, with address, opening hours, a call button, directions and a search.</p>
+<p><strong>Create the store type (once):</strong></p>
+<ol>
+<li>Go to <strong>Settings → Custom data → Metaobject definitions → Add definition</strong>.</li>
+<li>Name: <code>Store location</code>. Type: <code>store_location</code>.</li>
+<li>Add these fields (key in brackets): <strong>Name</strong> (<code>name</code>, single line text), <strong>Address</strong> (<code>address</code>, multi-line text), <strong>City</strong> (<code>city</code>, single line text), <strong>Phone</strong> (<code>phone</code>, single line text), <strong>Opening hours</strong> (<code>hours</code>, multi-line text), <strong>Map link</strong> (<code>map_url</code>, URL), <strong>Image</strong> (<code>image</code>, file, images only). Only Name and Address are required.</li>
+<li>Turn on <strong>Storefronts</strong> access. Save.</li>
+</ol>
+<p><strong>Add your stores:</strong> <strong>Content → Metaobjects → Store location → Add entry</strong>, one entry per store.</p>
+<p><strong>Show them:</strong> create a page (<strong>Online Store → Pages → Add page</strong>, for example &quot;Find a store&quot;) and choose the <strong>store-locator</strong> template. Or add a <strong>Store locator</strong> section to any page.</p>
+<p>If you leave <strong>Map link</strong> empty, the Directions button opens a map search for the address.</p>
+<h2 id="comparison-specs">Comparison specs</h2>
+<p>The <strong>Product comparison</strong> section can show up to six rows from product metafields, such as battery life or weight.</p>
+<ol>
+<li>For each spec, go to <strong>Settings → Custom data → Products → Add definition</strong>. For example: Name <code>Battery life</code>, namespace and key <code>specs.battery_life</code>, type <strong>Single line text</strong>.</li>
+<li>Fill in the spec on each product under <strong>Metafields</strong>.</li>
+<li>In the theme editor, add a <strong>Product comparison</strong> section, add the products, and for each row set <strong>Row label</strong> (for example &quot;Battery life&quot;) and <strong>Metafield</strong> (<code>specs.battery_life</code>).</li>
+</ol>
+<p>Empty values show as &quot;Not specified&quot;. Specs can also reference a metaobject (for example a &quot;Material&quot; entry); the theme shows its title.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>Nothing shows up:</strong> check the namespace and key are typed exactly (for example <code>custom.size_guide</code>, no spaces), the product has a value, and the theme block points to the same namespace and key.</li>
+<li><strong>A metaobject panel is empty:</strong> make sure the metaobject definition has <strong>Storefronts</strong> access turned on, and that its fields are named <code>title</code> and <code>content</code>.</li>
+<li><strong>A new metafield doesn&#39;t appear on the product:</strong> reload the product page in the admin after creating the definition.</li>
+</ul>
+</article>
+    <aside class="support-card" id="support" aria-labelledby="support-title">
+      <h2 id="support-title">Still stuck?</h2>
+      <p>Send us a message with your store address, the page and section you're working on, and a screenshot. We reply within two business days.</p>
+      <a class="button" href="#support">Contact support</a>
+    </aside>
+  </main>
+</div>
+<script>
+  // Large screens show the guide list as a sidebar; small screens keep it folded.
+  if (matchMedia('(min-width: 960px)').matches) document.querySelector('.sidebar__menu').open = true;
+</script>
+<footer class="colophon"><p>Elevra, a theme for Shopify. These guides cover the latest version of the theme.</p></footer>
+</body>
+</html>
